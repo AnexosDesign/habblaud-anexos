@@ -10,6 +10,8 @@ do meio (0.**3**.0).
 
 ## [Não lançado]
 
+- Fork Anexos Design: cenário local **Simulação Anexos**, sem integração de produção, com Sincronização Shopee e Triagem de conversas.
+
 ## [1.0.3] - 2026-10-16
 
 ### Corrigido

@@ -26,6 +26,7 @@ import type {
 import { SHELL_WAIT_TOOL, SPECIAL, type ShellOutcome } from '../../shared/activity';
 import { nameKey, type AppearanceParts } from '../../shared/appearance';
 import { DemoSimulator } from '../../shared/demo/simulator';
+import { AnexosSimulator } from '../../shared/demo/anexos';
 import { describeGitHubEvent, githubEventKey, RoomEffects, type GitHubEvent } from '../../shared/github';
 import { hash32 } from '../../shared/hash';
 import { applyPermission } from '../permissions/registry';
@@ -804,6 +805,16 @@ export class Office {
       this.demo = null;
       this.demoSnap = null;
     }
+    this.recomputeRoomNames();
+    this.markDirty();
+  }
+
+  /** Cenário local Anexos; não observa fontes nem integrações externas. */
+  setAnexosSimulation(enabled: boolean): void {
+    if (!enabled) return this.setDemo(false);
+    const now = this.now();
+    this.demo = new AnexosSimulator(now);
+    this.demoSnap = this.demo.snapshot(now);
     this.recomputeRoomNames();
     this.markDirty();
   }
