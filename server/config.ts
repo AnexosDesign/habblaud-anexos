@@ -17,6 +17,7 @@ export interface ServerConfig {
   dev: boolean;
   /** Liga o simulador de demonstração ao iniciar. */
   demo: boolean;
+  anexosSimulation: boolean;
   /** Rodando dentro de um container (PIDs do registro são do host: não dá para checá-los). */
   inDocker: boolean;
   home: string;
@@ -235,6 +236,7 @@ export function loadConfig(env: NodeJS.ProcessEnv = process.env, argv: string[] 
     host,
     dev: argv.includes('--dev'),
     demo: isTruthy(env.HABBLAUD_DEMO),
+    anexosSimulation: isTruthy(env.HABBLAUD_ANEXOS_SIMULATION),
     inDocker,
     home,
     claudeDirs: discoverClaudeDirs(env, home),
